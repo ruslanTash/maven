@@ -51,7 +51,7 @@ public class Application {
         }
 
 //    Создание объекта.
-        employeeDAO.createEmployee(new Employee(5, "Иванка", "Иванкович", "woman", 19, 2));
+        employeeDAO.createEmployee(new Employee(7, "Иванка", "Иванкович", "woman", 19, 2));
 
 //    Изменение конкретного объекта Employee в базе по id.
         employeeDAO.updateEmployee(5);

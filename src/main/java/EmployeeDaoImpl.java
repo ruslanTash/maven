@@ -8,7 +8,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     private static Connection getConnection() throws SQLException {
         final String user = "postgres";
-        final String password = "your_password";
+        final String password = "8258";
         final String url = "jdbc:postgresql://localhost:5432/skypro";
 
         return DriverManager.getConnection(url, user, password);
@@ -32,7 +32,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
             }
 
         } catch (SQLException e) {
-            System.out.println("Ошибка при подключении к базе данных!");
+            System.out.println("Ошибка при получении сотрудника по id!");
             e.printStackTrace();
         }
         return employee;
@@ -56,8 +56,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
                 Employee employee = new Employee(id, firstName, lastName, gender, age, cityId);
                 employees.add(employee);
             }
-        } catch (SQLException sqlException) {
-            throw new RuntimeException(sqlException);
+        } catch (SQLException e) {
+            System.out.println("Ошибка при получении всех сотрудников!");
+            e.printStackTrace();
         }
         return (List<Employee>) employees;
     }
@@ -87,8 +88,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
             statement.setInt(5, cityId);
             statement.executeUpdate();
             System.out.println("Данные сотрудника ID = " + id + " обновлены");
-        } catch (
-                SQLException e) {
+        } catch (SQLException e) {
             System.out.println("Ошибка при подключении к базе данных!");
             e.printStackTrace();
         }
@@ -120,7 +120,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
             System.out.println("Сотрудник ID = " + employee.getId() + " удален");
         } catch (
                 SQLException e) {
-            System.out.println("Ошибка при подключении к базе данных!");
+            System.out.println("Ошибка при создани сотрудника!");
             e.printStackTrace();
         }
     }
